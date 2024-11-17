@@ -1,0 +1,7 @@
+# Project exclude paths
+/console/target/
+/controller/target/
+/core/target/
+/dao-mongo/target/
+/service/target/
+/web/target/
