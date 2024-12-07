@@ -82,11 +82,11 @@ public class HallgatoDTO {
         this.email = email;
     }
 
-    public LocalDate getSzuletesiDatum() {
+    public  LocalDate getSzuletesiDatum() {
         return szuletesiDatum;
     }
 
-    public void setSzuletesiDatum(LocalDate szuletesiDatum) {
+    public void setSzuletesiDatum( @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate szuletesiDatum) {
         this.szuletesiDatum = szuletesiDatum;
     }
 
@@ -97,4 +97,6 @@ public class HallgatoDTO {
     public void setNem(Nem nem) {
         this.nem = nem;
     }
+
+
 }

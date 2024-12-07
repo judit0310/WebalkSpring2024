@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 @Service
@@ -78,5 +79,22 @@ public class HallgatoService {
 
     public Hallgato getHallgatoByNeptunKod(String neptunKod) throws HallgatoNemTalalhatoException {
         return dao.getHallgatoById(neptunKod);
+    }
+
+    public List<Hallgato> getHallgatokEvekKozott(int kezdo, int veg) {
+        List<Hallgato> hallgatok = getHallgatok();
+        List<Hallgato> result = new ArrayList<>();
+        for (Hallgato h : hallgatok) {
+            if (h.getSzuletesiDatum().getYear()>=kezdo && h.getSzuletesiDatum().getYear()<=veg) {
+                result.add(h);
+            }
+        }
+
+        //return hallgatok.stream().filter(h -> h.getSzuletesiDatum().getYear()>= kezdo && h.getSzuletesiDatum().getYear()<=veg).collect(Collectors.toList());
+        return result;
+    }
+
+    public List<Hallgato> getHallgatokByVezeteknev(String vezeteknev) {
+        return getHallgatok().stream().filter(h -> h.getTeljesNev().startsWith(vezeteknev)).collect(Collectors.toList());
     }
 }

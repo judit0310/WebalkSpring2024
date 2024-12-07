@@ -25,6 +25,10 @@
 </head>
 <body>
 
+<c:if test="${!empty message}">
+    <h2>${message}</h2>
+</c:if>
+
 <c:if test="${empty hallgatok}">
 Nincs hallgató, vegyél fel újat!
 </c:if>
